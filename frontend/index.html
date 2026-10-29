@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17243d">
+  <title>Family AI Game Day</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Family AI Game Day home">
+      <span class="brand-mark" aria-hidden="true"><span>✦</span></span>
+      <span>FAMILY<span class="brand-ai">AI</span>GAME DAY</span>
+    </a>
+    <div class="topbar-right">
+      <span class="topbar-note">PLAY TOGETHER · SCORE TOGETHER</span>
+      <div id="sessionBadge" class="session-badge" hidden></div>
+    </div>
+  </header>
+  <main>
+    <div class="progress" id="progress" aria-label="Game setup progress"></div>
+    <div id="notice" role="status" aria-live="polite"></div>
+    <section data-screen="game" class="screen"></section>
+    <section data-screen="players" class="screen" hidden></section>
+    <section data-screen="rules" class="screen" hidden></section>
+    <section data-screen="play" class="screen" hidden></section>
+    <section data-screen="judge" class="screen" hidden></section>
+    <section data-screen="results" class="screen" hidden></section>
+  </main>
+  <footer class="footer"><span class="footer-pixel" aria-hidden="true">◆</span> MADE FOR FAMILY GAME NIGHT <span class="footer-pixel" aria-hidden="true">◆</span></footer>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
