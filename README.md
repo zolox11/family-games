@@ -1,22 +1,28 @@
 # 🎮 Family AI Game Day
 
-### Pick a game. Play for real. Let the AI keep score. 🏆
+<p align="center"><strong>Pick a game. Play for real. Let the AI keep score. 🏆</strong></p>
+
+<p align="center">
+  <img src="screenshots/football.gif" width="82" alt="Football player and ball sticker">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="screenshots/music.gif" width="82" alt="Music notes and stars sticker">
+</p>
 
 Family AI Game Day is a local web app for five family-friendly mini-games. Set up players, record a round (or choose a video), review the AI judge's call, and apply the score.
 
 > **School-project prototype:** the judge is a fun demo, not an official referee. Results depend on the clip, lighting, camera angle, and how clearly the ball or hands appear.
 
-## ✨ A peek at the game
+## 🖼️ Take a look
 
-| Choose your challenge | Add your players |
-|:--:|:--:|
-| ![Game selection screen showing the five game cards](screenshots/screenshot1.png) | ![Player setup screen with team selection](screenshots/screenshot2.png) |
+**Pick a game**
 
-| Football game-day animation | Music and freeze animation |
-|:--:|:--:|
-| ![Animated football player and ball illustration](screenshots/football.gif) | ![Pixel-style music and star animation](screenshots/music.gif) |
+![Family AI Game Day home screen with the five game cards](screenshots/screenshot1.png)
 
-*The GIFs are decorative illustrations; they are not gameplay recordings.*
+**Add players and choose teams**
+
+![Player setup screen showing player names and team selection](screenshots/screenshot2.png)
+
+*The small football and music GIFs above are decorative stickers, not gameplay recordings.*
 
 ## 🕹️ The five games
 
