@@ -1,64 +1,109 @@
-# Family AI Game Day
+# 🎮 Family AI Game Day
 
-Pick a game, play together, and let the local AI referee review a video clip and update the score.
+### Pick a game. Play for real. Let the AI keep score. 🏆
 
-## Start the game
+Family AI Game Day is a local web app for five family-friendly mini-games. Set up players, record a round (or choose a video), review the AI judge's call, and apply the score.
 
-You only need to set this up once on your Windows computer:
+> **School-project prototype:** the judge is a fun demo, not an official referee. Results depend on the clip, lighting, camera angle, and how clearly the ball or hands appear.
 
-1. Install **Python 3.10 or newer**.
-2. Open PowerShell in this project folder.
-3. Install the app's packages:
+## ✨ A peek at the game
 
-   ```powershell
-   python -m pip install -r requirements.txt
-   ```
+| Choose your challenge | Add your players |
+|:--:|:--:|
+| ![Game selection screen showing the five game cards](screenshots/screenshot1.png) | ![Player setup screen with team selection](screenshots/screenshot2.png) |
 
-4. Start the app:
+| Football game-day animation | Music and freeze animation |
+|:--:|:--:|
+| ![Animated football player and ball illustration](screenshots/football.gif) | ![Pixel-style music and star animation](screenshots/music.gif) |
 
-   ```powershell
-   python run.py
-   ```
+*The GIFs are decorative illustrations; they are not gameplay recordings.*
 
-5. Open **http://localhost:8000** in your browser.
+## 🕹️ The five games
 
-Keep the PowerShell window open while you play. To stop the app, press **Ctrl+C** in that window. If Windows says port 8000 is already in use, close the other running copy of the app first.
+| Game | What the judge looks at |
+|---|---|
+| ⚽ **Football** | People, the ball, marked goal areas, and estimated possession |
+| 🎵 **Majlis Freeze** | Player pose movement after the music stops |
+| 🎙️ **Say It Right** | A spoken Arabic or English answer to a UAE heritage question |
+| ✋ **Hand Duel** | Falcon, Dhow, and Dallah hand signs |
+| 🪣 **Bean-Bag Bucket Toss** | A colour-sampled bean bag and the marked bucket area |
 
-## Play a round
+## 🚀 Start playing (Windows)
 
-1. Pick one of the five games and add the players.
-2. Read the rules and press **Everyone ready**.
-3. On the play screen, either record with your camera and microphone or choose a saved video.
-4. Press **Judge this round**. For Football and Bucket Toss, mark the goals or bucket on the first frame and tap the players or ball when asked.
-5. Review the AI's notes and annotated video, then press **Apply AI results** to update the score.
+### 1. Install Python
 
-For best Football results, use a steady side view with the whole play area in frame, two players who look different from each other, and a visible ball. Short, clear clips are easiest to test.
+Install **Python 3.10 or newer**. During setup, enable **Add Python to PATH**.
 
-## What to expect the first time
+### 2. Open this folder in PowerShell
 
-The app downloads its AI models the first time a game needs them. Keep the computer online and allow a few minutes for that first run. FFmpeg is included through the Python packages, so you normally do not need to install it separately.
+In File Explorer, open the project folder, click the address bar, type `powershell`, and press Enter.
 
-Camera recording works on `localhost` in modern browsers. You can also use a video saved on your computer. MP4 and WebM are recommended.
+### 3. Install the app packages
 
-## The games
-
-- **Football** — detects people and the ball, estimates possession, and checks marked goal areas.
-- **Majlis Freeze** — compares player movement after the music stops.
-- **Say It Right** — listens to an Arabic or English answer to a UAE heritage question.
-- **Hand Duel** — recognizes Falcon, Dhow, and Dallah hand signs.
-- **Bean-Bag Bucket Toss** — tracks a bright bean bag around the marked bucket.
-
-This is a school-project prototype. Camera angle, lighting, distance, and how clearly objects appear can affect the AI's decisions. Review the clip and events before applying a score.
-
-## Keep your project safe
-
-The app stores temporary uploads and annotated clips in `uploads` and `outputs`. These folders are excluded from source control. The local signing key is in `.env`; do not share that file. `.env.example` is only a template.
-
-## Optional: run a judge from PowerShell
-
-The web app is easiest for normal play. If you have a judge config JSON already prepared, you can run a clip directly:
+Run this once:
 
 ```powershell
-python standalone_judge.py clip.mp4 --game football --config config.json --out report.json
-python standalone_judge.py --verify report.json
+python -m pip install -r requirements.txt
 ```
+
+### 4. Start the game
+
+```powershell
+python run.py
+```
+
+Leave that PowerShell window open, then visit **[http://localhost:8000](http://localhost:8000)** in your browser.
+
+To shut the game down, return to PowerShell and press **Ctrl+C**. If the app says port 8000 is already in use, close the other running copy first.
+
+## 🏁 Play a round
+
+1. Choose a game and enter player names. Split players into teams when you want a team match.
+2. Read the rules and press **Everyone ready**.
+3. Record with your camera and microphone, or choose a saved video.
+4. On the judge screen, mark the goals or bucket and tap the players or object if the game asks you to.
+5. Press **Run AI judge**. Review the event explanations and annotated clip.
+6. Press **Apply AI results** to verify the signed report and add its points to the score.
+
+### 📹 Football clip tips
+
+- Keep the camera steady at the side of the play area.
+- Keep both players, the ball, and the goals in the frame.
+- Use noticeably different shirt colours and good lighting.
+- Draw the goal areas carefully and tap each player's starting position.
+- Try a short clip first; a clear 20–30 second recording is easier to inspect.
+
+MP4 and WebM clips are recommended. The upload limit is 300 MB. Your browser may ask permission to use the camera and microphone; recording on `localhost` is supported by modern browsers.
+
+## 🤖 First-time AI setup
+
+The AI model files download automatically the first time a game needs them. Keep the computer connected to the internet for that initial download; the models are then used locally. The first judge run can take longer while the models load.
+
+For best compatibility, use a 64-bit Python installation. The app includes a packaged FFmpeg fallback for audio extraction and annotated video.
+
+## 🔐 Signed reports
+
+The server signs judge reports with a local secret before allowing their score changes. You can paste a standalone report on the judge screen to verify it. Changing a report after it was signed should make verification fail.
+
+Keep `.env` private. It contains the local report-signing secret and should not be shared or included in a public export. `.env.example` is a safe setup template.
+
+## 📁 Project guide
+
+- `run.py` — starts the local web app.
+- `server/` — game/session APIs and report signing.
+- `judge/` — video, pose, hand, and audio judging logic.
+- `frontend/` — the browser screens and styles.
+- `screenshots/` — the screenshots and decorative GIFs shown above.
+- `uploads/` and `outputs/` — temporary incoming clips and generated annotated clips.
+- [Technical report (PDF)](TECHNICAL_REPORT.pdf) — implementation details and current limitations.
+
+## 🧩 If something goes wrong
+
+- **Page won't open:** check the PowerShell window for errors and confirm the app is running.
+- **Port 8000 is busy:** stop another copy of `python run.py` with **Ctrl+C**.
+- **Camera won't start:** allow camera/microphone permission, or use a saved clip instead.
+- **Judge takes a while:** the first run may download or load a model.
+- **No ball or hand detected:** move the camera closer, improve the light, and keep the object visible.
+- **Need to start over?** Stop the server with **Ctrl+C**, then run `python run.py` again.
+
+Have fun, cheer loudly, and may the best teammate win! 🍿
